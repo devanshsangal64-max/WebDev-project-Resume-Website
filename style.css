@@ -1,0 +1,188 @@
+/* Resume-style layout: photo + name on top, two columns below.
+   Palette: Navy #14213D, Cream #F4EDE0, Coral #FF6B5B */
+:root {
+  --navy: #14213d;
+  --cream: #f4ede0;
+  --paper: #fffaf1;
+  --line: #d9cfba;
+  --coral: #ff6b5b;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--navy);
+  background-color: var(--cream);
+}
+
+a { color: var(--coral); }
+a:hover { color: var(--navy); }
+
+/* ---------- Nav bar ---------- */
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.7rem 2rem;
+  background-color: var(--navy);
+}
+
+#navbar ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#navbar a {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+#navbar a:hover { color: var(--coral); }
+
+.logo { font-weight: bold; font-size: 1.1rem; }
+
+/* ---------- Header: photo left, name right ---------- */
+#top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2.5rem 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  background-color: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+#photo {
+  order: -1;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--coral);
+}
+
+#top h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0.3rem 0 0;
+  color: var(--coral);
+  font-weight: bold;
+}
+
+.hero-sub, .button { display: none; }
+
+/* ---------- Two columns ---------- */
+main {
+  display: flex;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  padding: 2rem 1.5rem;
+  background-color: var(--paper);
+}
+
+.sidebar { order: -1; flex: 1; }
+.content { flex: 2.3; }
+
+section { margin-bottom: 2rem; }
+
+/* section titles: bold small heading + short coral bar */
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  margin-top: 0.4rem;
+  background-color: var(--coral);
+}
+
+h3 { margin: 0 0 0.2rem; font-size: 1rem; }
+
+p { margin: 0.3rem 0; }
+
+/* ---------- Experience / education / projects entries ---------- */
+.card {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.card ul { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+
+.meta { font-weight: bold; font-size: 0.85rem; }
+.tools { font-size: 0.85rem; font-style: italic; }
+
+.tag {
+  display: inline-block;
+  margin-left: 0.3rem;
+  padding: 0 0.5rem;
+  background-color: var(--navy);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-weight: normal;
+}
+
+/* ---------- Tables ---------- */
+table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; }
+caption { text-align: left; font-weight: bold; padding-bottom: 0.3rem; }
+
+th, td {
+  text-align: left;
+  padding: 0.4rem 0.3rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.85rem;
+}
+
+th { background-color: var(--navy); color: var(--cream); }
+
+/* ---------- Hobbies list ---------- */
+.chips { margin: 0 0 0.8rem; padding-left: 1.2rem; }
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--navy);
+  color: var(--cream);
+  font-size: 0.85rem;
+}
+
+footer p { margin: 0; }
+
+/* ---------- Phones: stack the columns ---------- */
+@media (max-width: 700px) {
+  #top { flex-direction: column; text-align: center; margin-top: 0; }
+  #top h1 { font-size: 1.8rem; }
+  main { flex-direction: column; }
+  .sidebar { order: 0; }
+  #navbar { justify-content: center; }
+}
